@@ -27,3 +27,26 @@ BigQueryWriter.write[String](messages, toTableRow, toTableMetadata)
 ~~~
 
 The function `toTableMetadata` can be used to provide destination table on row basis. This design is inspired by Apache Beam's [DynamicDestinations](https://beam.apache.org/releases/javadoc/2.1.0/org/apache/beam/sdk/io/gcp/bigquery/DynamicDestinations.html).
+
+## Using in your project
+Since we don't have any central JFrog or Sonatype repository the only way to consume this library is to publish it to local maven/ivy repository.
+
+Clone the repo, and publish to local ivy repo.
+```
+sbt publishLocal
+```
+After this add following dependency in your Spark app to use the library.
+
+### Maven
+```XML
+<dependency>
+    <groupId>com.tokopedia</groupId>
+    <artifactId>spark-bigquery-writer_2.12</artifactId>
+    <version>0.2</version>
+</dependency>
+```
+
+### SBT
+```
+libraryDependencies += "com.tokopedia" %% "spark-bigquery-writer" % "0.2"
+```
